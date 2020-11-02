@@ -50,11 +50,11 @@ Queue.prototype.constructQueue = function (data, constructReverse) {
 
 	if (!constructReverse) {
 		for (let i = 0; i < len; i++) {
-			this.push(data[i]);
+			this.enqueue(data[i]);
 		}
 	} else {
 		for (let i = len - 1; i >= 0; i--) {
-			this.push(data[i]);
+			this.enqueue(data[i]);
 		}
 	}
 };
@@ -68,6 +68,10 @@ Queue.prototype.enqueue = function (data) {
 		this.resize();
 	}
 	this.queue[++this.rear] = data;
+
+	if (this.rear - this.front + 1 > this.maxSize) {
+		this.dequeue();
+	}
 
 	return this.rear - this.front + 1;
 };
@@ -86,14 +90,16 @@ Queue.prototype.resize = function () {
 		tempQueue = this.queue;
 	} else {
 		// make new array
-		tempQueue = new Array(this.length * 2);
+		this.length *= 2;
+		tempQueue = new Array(this.length);
 	}
 	let _front = this.front;
-	for (let i = 0; i < this.rear - this.front; i++) {
+	for (let i = 0; i <= this.rear - this.front; i++) {
 		tempQueue[i] = this.queue[_front++];
 	}
-	this.front = 0;
+
 	this.rear = this.rear - this.front;
+	this.front = 0;
 	this.queue = tempQueue;
 };
 
@@ -105,7 +111,7 @@ Queue.prototype.isEmpty = function () {
 };
 
 Queue.prototype.peak = function () {
-	if (this.front > this.rear) {
+	if (this.front <= this.rear) {
 		return this.queue[this.rear];
 	}
 	// or return undefined

@@ -3,7 +3,7 @@ window.onload = function () {
 
 	var rawData = [1, 2, 3];
 
-	window.queue = new Queue.ArrayQueue({
+	window.queue = new Queue.ListQueue({
 		data: rawData,
 		initialSize: 3,
 		maxSize: 3,

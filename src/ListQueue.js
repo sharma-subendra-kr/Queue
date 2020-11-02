@@ -57,11 +57,11 @@ Queue.prototype.constructQueue = function (data, constructReverse) {
 
 	if (!constructReverse) {
 		for (i = 0; i < len; i++) {
-			this.push(data[i]);
+			this.enqueue(data[i]);
 		}
 	} else {
 		for (i = len - 1; i >= 0; i--) {
-			this.push(data[i]);
+			this.enqueue(data[i]);
 		}
 	}
 };
@@ -76,6 +76,11 @@ Queue.prototype.enqueue = function (d) {
 		this.HEAD = node;
 		this.TAIL = node;
 	}
+
+	if (this.length + 1 > this.maxSize) {
+		this.dequeue();
+	}
+
 	return ++this.length;
 };
 
