@@ -30,6 +30,8 @@ Written by Subendra Kumar Sharma.
 */
 
 function Queue(options) {
+	this.maxSize = options.maxSize;
+
 	this.length = 0;
 	this.HEAD = null;
 	this.TAIL = null;
@@ -94,7 +96,7 @@ Queue.prototype.dequeue = function () {
 	// or return undefined
 };
 
-Queue.isEmpty = function () {
+Queue.prototype.isEmpty = function () {
 	if (this.HEAD) {
 		return false;
 	}
@@ -124,6 +126,7 @@ Queue.prototype.getSize = function () {
 Queue.prototype.empty = function () {
 	this.HEAD = null;
 	this.TAIL = null;
+	this.length = 0;
 };
 
 export default Queue;

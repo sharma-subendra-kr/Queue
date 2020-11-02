@@ -30,7 +30,9 @@ Written by Subendra Kumar Sharma.
 */
 
 function Queue(options) {
+	this.maxSize = options.maxSize;
 	this.initialSize = options.initialSize || 100;
+
 	this.length = this.initialSize;
 	this.queue = new Array(this.length);
 	this.front = 0;
@@ -95,7 +97,7 @@ Queue.prototype.resize = function () {
 	this.queue = tempQueue;
 };
 
-Queue.isEmpty = function () {
+Queue.prototype.isEmpty = function () {
 	if (this.front > this.rear) {
 		return true;
 	}
@@ -122,7 +124,7 @@ Queue.prototype.getData = function () {
 };
 
 Queue.prototype.getSize = function () {
-	return this.length;
+	return this.rear - this.front + 1;
 };
 
 Queue.prototype.empty = function () {
