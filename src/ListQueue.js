@@ -35,7 +35,7 @@ function Queue(options) {
 	this.TAIL = null;
 
 	if (options && Array.isArray(options.data)) {
-		this.constructQueue(options.data);
+		this.constructQueue(options.data, options.constructReverse);
 	}
 }
 
@@ -49,10 +49,18 @@ Queue.prototype.constructNode = function (d) {
 	};
 };
 
-Queue.prototype.constructQueue = function (data) {
+Queue.prototype.constructQueue = function (data, constructReverse) {
 	var len = data.length;
-	for (var i = len - 1; i >= 0; i--) {
-		this.push(data[i]);
+	var i;
+
+	if (!constructReverse) {
+		for (i = 0; i < len; i++) {
+			this.push(data[i]);
+		}
+	} else {
+		for (i = len - 1; i >= 0; i--) {
+			this.push(data[i]);
+		}
 	}
 };
 

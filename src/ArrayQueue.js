@@ -37,16 +37,23 @@ function Queue(options) {
 	this.rear = -1;
 
 	if (options && Array.isArray(options.data)) {
-		this.constructQueue(options.data);
+		this.constructQueue(options.data, options.constructReverse);
 	}
 }
 
 Queue.prototype.constructor = Queue;
 
-Queue.prototype.constructQueue = function (data) {
-	var len = data.length;
-	for (var i = len - 1; i >= 0; i--) {
-		this.push(data[i]);
+Queue.prototype.constructQueue = function (data, constructReverse) {
+	const len = data.length;
+
+	if (!constructReverse) {
+		for (let i = 0; i < len; i++) {
+			this.push(data[i]);
+		}
+	} else {
+		for (let i = len - 1; i >= 0; i--) {
+			this.push(data[i]);
+		}
 	}
 };
 
