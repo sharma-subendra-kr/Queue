@@ -415,8 +415,10 @@ ArrayQueue_Queue.prototype.getData = function () {
 };
 
 ArrayQueue_Queue.prototype.setData = function (data) {
+  var _this$options2;
+
   this.empty();
-  this.constructQueue(data, this.options.constructReverse);
+  this.constructQueue(data, (_this$options2 = this.options) === null || _this$options2 === void 0 ? void 0 : _this$options2.constructReverse);
 };
 
 ArrayQueue_Queue.prototype.getSize = function () {

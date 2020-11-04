@@ -135,7 +135,7 @@ Queue.prototype.getData = function () {
 
 Queue.prototype.setData = function (data) {
 	this.empty();
-	this.constructQueue(data, this.options.constructReverse);
+	this.constructQueue(data, this.options?.constructReverse);
 };
 
 Queue.prototype.getSize = function () {
