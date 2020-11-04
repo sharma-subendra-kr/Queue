@@ -32,19 +32,19 @@ Written by Subendra Kumar Sharma.
 function Queue(options) {
 	this.options = options;
 
-	this.maxSize = options.maxSize;
-	this.initialSize = options.initialSize || 100;
+	this.maxSize = options?.maxSize;
+	this.initialSize = options?.initialSize || 100;
 
 	this.length = this.initialSize;
 	this.queue = new Array(this.length);
 	this.front = 0;
 	this.rear = -1;
 
-	if (options && Array.isArray(options.data)) {
+	if (Array.isArray(options?.data)) {
 		this.constructQueue(options.data, options.constructReverse);
 	}
 
-	delete this.options.data;
+	delete this.options?.data;
 }
 
 Queue.prototype.constructor = Queue;

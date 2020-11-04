@@ -30,13 +30,13 @@ Written by Subendra Kumar Sharma.
 */
 
 function Queue(options) {
-	this.maxSize = options.maxSize;
+	this.maxSize = options?.maxSize;
 
 	this.length = 0;
 	this.HEAD = null;
 	this.TAIL = null;
 
-	if (options && Array.isArray(options.data)) {
+	if (Array.isArray(options?.data)) {
 		this.constructQueue(options.data, options.constructReverse);
 	}
 }

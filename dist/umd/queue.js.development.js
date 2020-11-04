@@ -162,12 +162,12 @@ Written by Subendra Kumar Sharma.
 
 */
 function Queue(options) {
-  this.maxSize = options.maxSize;
+  this.maxSize = options === null || options === void 0 ? void 0 : options.maxSize;
   this.length = 0;
   this.HEAD = null;
   this.TAIL = null;
 
-  if (options && Array.isArray(options.data)) {
+  if (Array.isArray(options === null || options === void 0 ? void 0 : options.data)) {
     this.constructQueue(options.data, options.constructReverse);
   }
 }
@@ -306,19 +306,21 @@ Written by Subendra Kumar Sharma.
 
 */
 function ArrayQueue_Queue(options) {
+  var _this$options;
+
   this.options = options;
-  this.maxSize = options.maxSize;
-  this.initialSize = options.initialSize || 100;
+  this.maxSize = options === null || options === void 0 ? void 0 : options.maxSize;
+  this.initialSize = (options === null || options === void 0 ? void 0 : options.initialSize) || 100;
   this.length = this.initialSize;
   this.queue = new Array(this.length);
   this.front = 0;
   this.rear = -1;
 
-  if (options && Array.isArray(options.data)) {
+  if (Array.isArray(options === null || options === void 0 ? void 0 : options.data)) {
     this.constructQueue(options.data, options.constructReverse);
   }
 
-  delete this.options.data;
+  (_this$options = this.options) === null || _this$options === void 0 ? true : delete _this$options.data;
 }
 
 ArrayQueue_Queue.prototype.constructor = ArrayQueue_Queue;
