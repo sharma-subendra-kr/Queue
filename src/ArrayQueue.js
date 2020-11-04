@@ -30,6 +30,8 @@ Written by Subendra Kumar Sharma.
 */
 
 function Queue(options) {
+	this.options = options;
+
 	this.maxSize = options.maxSize;
 	this.initialSize = options.initialSize || 100;
 
@@ -41,6 +43,8 @@ function Queue(options) {
 	if (options && Array.isArray(options.data)) {
 		this.constructQueue(options.data, options.constructReverse);
 	}
+
+	delete this.options.data;
 }
 
 Queue.prototype.constructor = Queue;
@@ -127,6 +131,11 @@ Queue.prototype.getData = function () {
 	}
 
 	return arr;
+};
+
+Queue.prototype.setData = function (data) {
+	this.empty();
+	this.constructQueue(data, this.options.constructReverse);
 };
 
 Queue.prototype.getSize = function () {

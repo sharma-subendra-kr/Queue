@@ -306,6 +306,7 @@ Written by Subendra Kumar Sharma.
 
 */
 function ArrayQueue_Queue(options) {
+  this.options = options;
   this.maxSize = options.maxSize;
   this.initialSize = options.initialSize || 100;
   this.length = this.initialSize;
@@ -316,6 +317,8 @@ function ArrayQueue_Queue(options) {
   if (options && Array.isArray(options.data)) {
     this.constructQueue(options.data, options.constructReverse);
   }
+
+  delete this.options.data;
 }
 
 ArrayQueue_Queue.prototype.constructor = ArrayQueue_Queue;
@@ -407,6 +410,11 @@ ArrayQueue_Queue.prototype.getData = function () {
   }
 
   return arr;
+};
+
+ArrayQueue_Queue.prototype.setData = function (data) {
+  this.empty();
+  this.constructQueue(data, this.options.constructReverse);
 };
 
 ArrayQueue_Queue.prototype.getSize = function () {
