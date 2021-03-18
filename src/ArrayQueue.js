@@ -47,8 +47,6 @@ function Queue(options) {
 	delete this.options?.data;
 }
 
-Queue.prototype.constructor = Queue;
-
 Queue.prototype.constructQueue = function (data, constructReverse) {
 	const len = data.length;
 
@@ -114,7 +112,7 @@ Queue.prototype.isEmpty = function () {
 	return false;
 };
 
-Queue.prototype.peak = function () {
+Queue.prototype.peek = function () {
 	if (this.front <= this.rear) {
 		return this.queue[this.rear];
 	}
