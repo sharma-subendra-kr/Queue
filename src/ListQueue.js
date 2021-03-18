@@ -41,8 +41,6 @@ function Queue(options) {
 	}
 }
 
-Queue.prototype.constructor = Queue;
-
 Queue.prototype.constructNode = function (d) {
 	return {
 		next: null,
@@ -108,7 +106,7 @@ Queue.prototype.isEmpty = function () {
 	return true;
 };
 
-Queue.prototype.peak = function () {
+Queue.prototype.peek = function () {
 	return this.TAIL?.d;
 };
 
