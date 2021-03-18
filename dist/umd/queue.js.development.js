@@ -172,8 +172,6 @@ function Queue(options) {
   }
 }
 
-Queue.prototype.constructor = Queue;
-
 Queue.prototype.constructNode = function (d) {
   return {
     next: null,
@@ -244,7 +242,7 @@ Queue.prototype.isEmpty = function () {
   return true;
 };
 
-Queue.prototype.peak = function () {
+Queue.prototype.peek = function () {
   var _this$TAIL;
 
   return (_this$TAIL = this.TAIL) === null || _this$TAIL === void 0 ? void 0 : _this$TAIL.d;
@@ -323,8 +321,6 @@ function ArrayQueue_Queue(options) {
   (_this$options = this.options) === null || _this$options === void 0 ? true : delete _this$options.data;
 }
 
-ArrayQueue_Queue.prototype.constructor = ArrayQueue_Queue;
-
 ArrayQueue_Queue.prototype.constructQueue = function (data, constructReverse) {
   var len = data.length;
 
@@ -395,7 +391,7 @@ ArrayQueue_Queue.prototype.isEmpty = function () {
   return false;
 };
 
-ArrayQueue_Queue.prototype.peak = function () {
+ArrayQueue_Queue.prototype.peek = function () {
   if (this.front <= this.rear) {
     return this.queue[this.rear];
   } // or return undefined
