@@ -2,7 +2,7 @@
   "name": "Queue",
   "version": "1.0.1",
   "description": "Queue, a JavaScript FIFO Queue.",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/webpack-dev-server --config webpack.dev.js",
